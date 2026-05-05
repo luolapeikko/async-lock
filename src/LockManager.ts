@@ -1,4 +1,4 @@
-import {Lock, ILockOptions, LockReleaseFunction} from './Lock'; // Assuming lock.ts is in the same directory
+import type {ILockOptions, Lock, LockReleaseFunction} from './Lock'; // Assuming lock.ts is in the same directory
 
 export class LockManager {
 	private locks = new Map<string, Lock>();
@@ -7,7 +7,7 @@ export class LockManager {
 	 * Registers a new lock instance with the manager.
 	 * @param lock The lock instance to register.
 	 */
-	registerLock(lock: Lock): void {
+	public registerLock(lock: Lock): void {
 		if (this.locks.has(lock.key)) {
 			console.warn(`Lock with key "${lock.key}" already registered.`);
 		}
@@ -19,7 +19,7 @@ export class LockManager {
 	 * @param key The unique key of the lock.
 	 * @returns The lock instance or undefined if not found.
 	 */
-	getLock(key: string): Lock | undefined {
+	public getLock(key: string): Lock | undefined {
 		return this.locks.get(key);
 	}
 
@@ -29,7 +29,7 @@ export class LockManager {
 	 * @param options Optional lock options.
 	 * @returns A promise that resolves to a release function, or rejects if it fails.
 	 */
-	async acquire(key: string, options?: ILockOptions): Promise<LockReleaseFunction> {
+	public acquire(key: string, options?: ILockOptions): Promise<LockReleaseFunction> {
 		const lock = this.getLock(key);
 		if (!lock) {
 			throw new Error(`Lock with key "${key}" not registered.`);

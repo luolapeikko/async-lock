@@ -1,4 +1,4 @@
-import {type ILoggerLike} from '@avanio/logger-like';
+import type {ILoggerLike} from '@avanio/logger-like';
 import {Mutex} from 'async-mutex';
 import {Lock, type LockReleaseFunction} from './Lock';
 

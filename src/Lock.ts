@@ -1,4 +1,4 @@
-import {ILoggerLike} from '@avanio/logger-like';
+import type {ILoggerLike} from '@avanio/logger-like';
 
 /**
  * Options for acquiring a lock.
